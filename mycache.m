@@ -107,13 +107,15 @@ for x=0:c
     
     Bi = zeros(N,c-x);
     Ci = zeros(N,c-x);
-    
+   %{ 
+    %popularity
     for k=1:N*(c-x)
         [Bi,Ci] = getCacheNode(Bi,Ci,P,lamda,k);
     end
-    
-   % Bi = allocateCacheNode(Bi, Ci, P, lamda);
-    
+    %}
+  
+    Bi = allocateCacheNode(Bi, Ci, P, lamda);
+ 
     d2 = 0;
     d22 = 0;
     for i=1:N
