@@ -1,4 +1,5 @@
 clear all;
+%this is the main simulation loop
 N = 10;     %number of nodes
 c = 5;     %cache size per node
 M = 1000;   %number of contents
