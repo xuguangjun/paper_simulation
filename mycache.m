@@ -1,11 +1,11 @@
 clear all;
 %this is the main simulation loop
 N = 10;     %number of nodes
-c = 5;     %cache size per node
+c = 20;     %cache size per node
 M = 1000;   %number of contents
 R = 100000;  %requests per node
 %s = [0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55];    %s para in the zipf distribution per node
-s = 1.7;
+s = 2;
 
 tl = 1;     %time delay when request a item that locally valiable
 tr = 6;    %time delay when request a item that group cache are valiable
@@ -35,7 +35,7 @@ for i=1:R
 end
 lamda1 = sort(lamda_temp, 'descend');
 lamda = zeros(N,M);
-correlation = 0.5;
+correlation = 0.2;
 lamda(1,:) = lamda1;
 for i=2:N
     lamda(i,:) = correlationRequest(lamda1, percent, correlation);
@@ -107,12 +107,11 @@ for x=0:c
     
     Bi = zeros(N,c-x);
     Ci = zeros(N,c-x);
-   %{ 
+
     %popularity
-    for k=1:N*(c-x)
-        [Bi,Ci] = getCacheNode(Bi,Ci,P,lamda,k);
-    end
-    %}
+    %for k=1:N*(c-x)
+    %    [Bi,Ci] = getCacheNode(Bi,Ci,P,lamda,k);
+    %end
   
     Bi = allocateCacheNode(Bi, Ci, P, lamda);
  
