@@ -28,6 +28,7 @@ end
 %and the item here is content 1, but in node 2, all are the same except
 %the item here is content 10
 %}
+
 request_temp = zipf(s, M, R);
 lamda_temp = zeros(1,M);
 for i=1:R
@@ -107,13 +108,12 @@ for x=0:c
     
     Bi = zeros(N,c-x);
     Ci = zeros(N,c-x);
-
     %popularity
-    %for k=1:N*(c-x)
-    %    [Bi,Ci] = getCacheNode(Bi,Ci,P,lamda,k);
-    %end
+    for k=1:N*(c-x)
+        [Bi,Ci] = getCacheNode(Bi,Ci,P,lamda,k);
+    end
   
-    Bi = allocateCacheNode(Bi, Ci, P, lamda);
+    %Bi = allocateCacheNode(Bi, Ci, P, lamda);
  
     d2 = 0;
     d22 = 0;
@@ -158,10 +158,10 @@ for x=0:c
         d3 = d3 + lamda_sum(1,D(i))*ts;
     end
     dd_temp(3,x+1) = d3;
-    
     dd(1,x+1) = d1 + d11 + d2 + d22 + d3;
 end
-ratio1 = min(dd)/dd(1,1);
-ratio2 = min(dd)/dd(1, c+1);
+min(dd)
+ratio1 = min(dd)/dd(1,1)
+ratio2 = min(dd)/dd(1, c+1)
 
 
