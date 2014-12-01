@@ -12,5 +12,5 @@ hold on;
 plot(x, data(4,:), 'g--*');
 title('按方差放置与按流行度放置对比');
 xlabel('节点请求随机化参数\rho');
-ylabel('比值\theta');
+ylabel('比值\theta (‰)');
 legend('s=0.5', 's=0.8', 's=1.1', 's=1.4');
